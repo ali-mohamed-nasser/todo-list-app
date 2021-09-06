@@ -2,7 +2,7 @@
     <div :class="[task.reminder ? 'Reminder' :'', 'Task']">
         <h4>{{ task.text }}</h4>
         <p>{{ task.day }}</p>
-        <i class="fas fa-times" @click="deleteTask(task.id)"></i>
+        <i class="fas fa-light fa-trash" @click="deleteTask(task.id)"></i>
     </div>
 </template>
 
