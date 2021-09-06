@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <Header title="VueJS ToDo List Application" />
+    <AddTaskPanel />
     <Tasks @delete-task="deleteTask" @toggle-reminder="toggleDeminder" :tasks="tasks" />
   </div>
 </template>
@@ -9,11 +10,14 @@
 import './App.scss';
 import Header from '../Header/Header.vue';
 import Tasks from '../Tasks/Tasks.vue';
+import AddTaskPanel from '../AddTaskPanel/AddTaskPanel.vue';
+
 export default {
   name: 'App',
   components: {
     Header,
-    Tasks
+    Tasks,
+    AddTaskPanel
   },
   methods: {
     deleteTask(id) {

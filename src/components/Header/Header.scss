@@ -2,8 +2,8 @@
 @import '../../assets/css/generalStyle';
 
 // Header styles
-.Header { padding: 10px; border-bottom: 1px solid $--color-light-gray; text-align: left; overflow: hidden;
+.Header { padding: 10px 0; border-bottom: 1px solid $--color-light-gray; text-align: left; overflow: hidden;
     .title { float: left; height: 38px; margin: 15px 0; line-height: 38px;
-        h3 { margin: 0; }
+        h3 { margin: 0; text-transform: uppercase; }
     }
 }
