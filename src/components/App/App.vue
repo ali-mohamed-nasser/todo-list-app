@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Header title="VueJS ToDo List Application" />
-    <Tasks :tasks="tasks" />
+    <Tasks @delete-task="deleteTask" @toggle-reminder="toggleDeminder" :tasks="tasks" />
   </div>
 </template>
 
@@ -14,6 +14,15 @@ export default {
   components: {
     Header,
     Tasks
+  },
+  methods: {
+    deleteTask(id) {
+      if( confirm('Are you sure, you want to delete this task ?') )
+        this.tasks = this.tasks.filter(task => task.id !== id);
+    },
+    toggleDeminder(id) {
+      this.tasks = this.tasks.map(task => task.id === id ? { ...task, reminder: !task.reminder } : task);
+    }
   },
   data() {
     return {

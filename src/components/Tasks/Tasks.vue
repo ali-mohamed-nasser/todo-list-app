@@ -1,6 +1,11 @@
 <template>
+    <p>Note: You can double click on a task to switch the reminderon or off.</p>
     <div class="Tasks" :key="task.id" v-for="task in tasks">
-        <Task :task="task" />
+        <Task 
+            @delete-task="$emit('delete-task', task.id)" 
+            @toggle-reminder="$emit('toggle-reminder', task.id)" 
+            :task="task" 
+        />
     </div>
 </template>
 
@@ -14,6 +19,7 @@ export default {
     },
     components: {
         Task
-    }
+    },
+    emits: ['delete-task', 'toggle-reminder']
 }
 </script>
