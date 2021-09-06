@@ -1,7 +1,7 @@
 <template>
     <div className="input-area">
         <label v-if="mainlabel" className="main-label">{{ mainlabel }}</label>
-        <input :type="inputType" :name="name" :placeholder="placeholder"/>
+        <input @input="$emit('input-change', inputValue)" autocomplete="off" @change="$emit('input-change', inputValue)" v-model="inputValue" :type="inputType" :name="name" :placeholder="placeholder"/>
     </div>
 </template>
 
@@ -17,6 +17,12 @@ export default {
         },
         name: String,
         placeholder: String
-    }
+    },
+    data() {
+        return {
+            inputValue: ''
+        }
+    },
+    emits: ['input-change']
 }
 </script>
