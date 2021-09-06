@@ -1,0 +1,18 @@
+// Variables
+$--color-white: #FFF;
+$--color-dark-blue: #1C1D24;
+$--color-dark-gray: #25262D;
+$--color-light-gray: #818FAA;
+$--color-red: #EC6F6F;
+$--color-green: #53DB93;
+$--color-blue: #6FA1EC;
+$--border-opacity: 1px solid rgba(129, 143, 170, .2);
+
+// Add prefixes to CSS3 properties function
+@mixin add_prefixes( $--property-name, $--property-value ) {
+    @each $--prefix in ( -webkit- -moz- -o- -ms- ) { #{ $--prefix }#{ $--property-name }: $--property-value; }
+    #{ $--property-name }: $--property-value;
+}
+
+// Transition effect
+%transitions { @include add_prefixes( transition, all .3s ease-in-out!important ); }

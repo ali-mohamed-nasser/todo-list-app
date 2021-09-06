@@ -1,0 +1,11 @@
+// Importing general style
+@import '../../assets/css/generalStyle';
+
+// Button styles
+button { display: inline-block; padding: 0 40px; height: 38px; padding-bottom: 3px; margin: 15px!important; width: unset; cursor: pointer; border: none; outline: none; @include add_prefixes( border-radius, 25px!important ); color: $--color-white; @extend %transitions; letter-spacing: .3px; font-size: 14px!important; margin-right: 10px!important; float: right;
+    &:last-of-type { margin-right: 0!important; }
+}
+
+// Success button is green and danger button is red and on hover make the color darker a bit
+.button-success { background-color: $--color-green; &:hover { background-color: $--color-green - 40; } }
+.button-danger { background-color: $--color-red; &:hover { background-color: $--color-red - 40; } }
