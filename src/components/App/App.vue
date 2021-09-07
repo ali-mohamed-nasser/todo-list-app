@@ -22,11 +22,13 @@ export default {
   },
   methods: {
     // Delete a task
-    // First remove that task from the dom then make the hhtp request to the firebase database to delete it
+    // First remove that task from the database then if it deleted update the dom
+    // Else show an alert if somthing wrong happend 
     deleteTask(id) {
       if( confirm('Are you sure, you want to delete this task ?') ) {
-        this.tasks = this.tasks.filter(task => task.id !== id);
-        axios.delete(`https://todo-list-app-c2763-default-rtdb.firebaseio.com/tasks/${ id }.json`).catch(error => console.log(error));
+        axios.delete(`https://todo-list-app-c2763-default-rtdb.firebaseio.com/tasks/${ id }.json`).then(respod => {
+          respod.status === 200 ? this.tasks = this.tasks.filter(task => task.id !== id) : alert('Error in deleting the task!');
+        }).catch(error => console.log(error));
       }
         
     },
@@ -42,10 +44,11 @@ export default {
       });
     },
     // Add task
-    // Insert that task to the dom then update firebase :)
+    // Insert that task to the database then update the dom :)
     addTask(task) {
-      this.tasks = [...this.tasks, task];
-      axios.post('https://todo-list-app-c2763-default-rtdb.firebaseio.com/tasks.json', task).catch(error => console.log(error));
+      axios.post('https://todo-list-app-c2763-default-rtdb.firebaseio.com/tasks.json', task).then(respond => {
+        this.tasks = respond.status === 200 ? [...this.tasks, task] : this.tasks;
+      }).catch(error => console.log(error));
     },
     // Switch between the show and hide of the add task form
     toggleAddTaskPanel() { this.showAddTaskPanel = !this.showAddTaskPanel; }
