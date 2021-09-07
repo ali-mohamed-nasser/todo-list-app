@@ -14,9 +14,7 @@ export default {
         title: String,
         showAddTaskPanel: Boolean
     },
-    components: {
-        Button
-    },
+    components: { Button },
     emits: ['button-clicked']
 }
 </script>

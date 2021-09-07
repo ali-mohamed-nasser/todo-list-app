@@ -48,9 +48,7 @@ export default {
             }
         }
     },
-    props: {
-        showAddTaskPanel: Boolean
-    },
+    props: { showAddTaskPanel: Boolean },
     data() {
         return {
             text: '',

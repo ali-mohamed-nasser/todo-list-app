@@ -1,6 +1,7 @@
 // Importing general style
 @import '../../../assets/css/generalStyle';
 
+// Single task style
 .Task { user-select: none; border-left: 5px solid transparent; position: relative; margin: 10px 0; padding: 15px; padding-bottom: 5px; cursor: pointer; @extend %transitions; background-color: #F8F8F8;
     h4 { margin: 0; @extend %transitions; }
     &:hover { h4 { color: $--color-green; } }
@@ -9,4 +10,5 @@
     }
 }
 
+// Reminder left green border
 .Reminder { border-color: $--color-green; }

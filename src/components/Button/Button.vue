@@ -6,9 +6,7 @@
 import './Button.scss';
 export default {
     name: 'Button',
-    props: {
-        className: String
-    },
+    props: { className: String },
     emits: ['button-clicked']
 }
 </script>

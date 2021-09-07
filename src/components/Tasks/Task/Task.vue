@@ -11,9 +11,7 @@ import './Task.scss';
 
 export default {
     name: 'Task',
-    props: {
-        task: Object
-    },
+    props: { task: Object },
     emits:['delete-task', 'toggle-reminder']
 }
 </script>
