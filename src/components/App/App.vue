@@ -11,6 +11,7 @@ import './App.scss';
 import Header from '../Header/Header.vue';
 import Tasks from '../Tasks/Tasks.vue';
 import AddTaskPanel from '../AddTaskPanel/AddTaskPanel.vue';
+import axios from 'axios';
 
 export default {
   name: 'App',
@@ -41,26 +42,11 @@ export default {
     }
   },
   created() {
-    this.tasks = [
-    {
-      "id": "1",
-      "text": "Doctors Appointment",
-      "day": "March 5th at 2:30pm",
-      "reminder": true
-    },
-    {
-      "id": "2",
-      "text": "Meeting with boss",
-      "day": "March 6th at 1:30pm",
-      "reminder": true
-    },
-    {
-      "id": "3",
-      "text": "Food shopping",
-      "day": "March 7th at 2:00pm",
-      "reminder": false
-    }
-  ]
+    axios.get('https://todo-list-app-c2763-default-rtdb.firebaseio.com/tasks.json').then(respond => {
+      if( respond ) {
+        this.tasks = respond.data;
+      }
+    }).catch(error => console.log(error));
   }
 }
 </script>

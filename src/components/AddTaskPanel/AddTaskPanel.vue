@@ -33,7 +33,7 @@ export default {
                 const newTask = {
                     id: Math.floor(Math.random() * 1000),
                     text: this.text,
-                    day: formatedDate,
+                    date: formatedDate,
                     reminder: this.reminder
                 }
 
