@@ -1,7 +1,7 @@
 <template>
     <div className="input-area">
         <label v-if="mainlabel" className="main-label">{{ mainlabel }}</label>
-        <input autocomplete="off" :value="modelValue" @input="$emit('update:modelValue', $event.target.value)" :type="inputType" :name="name" :placeholder="placeholder"/>
+        <input autocomplete="off" :value="modelValue" :checked="checked" @input="$emit('update:modelValue', $event.target.value)" :type="inputType" :name="name" :placeholder="placeholder"/>
     </div>
 </template>
 
@@ -17,7 +17,8 @@ export default {
         },
         name: String,
         placeholder: String,
-        modelValue: [String, Number, Boolean, Array, Object]
+        modelValue: String,
+        checked: Boolean
     },
 }
 </script>

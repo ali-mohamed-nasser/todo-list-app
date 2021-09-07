@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Header title="VueJS ToDo List Application" />
-    <AddTaskPanel />
+    <AddTaskPanel @add-task="addTask" />
     <Tasks @delete-task="deleteTask" @toggle-reminder="toggleDeminder" :tasks="tasks" />
   </div>
 </template>
@@ -26,6 +26,9 @@ export default {
     },
     toggleDeminder(id) {
       this.tasks = this.tasks.map(task => task.id === id ? { ...task, reminder: !task.reminder } : task);
+    },
+    addTask(task) {
+      this.tasks = [task, ...this.tasks];
     }
   },
   data() {
