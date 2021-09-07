@@ -4,7 +4,7 @@
 // Labels and input styles
 .input-area { width: 100%; overflow: hidden; padding: 15px 0; text-align: left; padding-bottom: 5px;
     &:last-of-type { padding-bottom: 0; margin-bottom: 30px; }
-    input { margin-top: 5px; width: calc(100% - 50px); height: 38px; @include add_prefixes( border-radius, 8px ); font-size: 14px; border: none; outline: none; background-color: #F8F8F8; padding: 0 15px; padding-bottom: 0; color: $--color-dark-blue; 
+    input { margin-top: 5px; width: calc(100% - 30px); height: 38px; font-size: 14px; border: none; outline: none; background-color: #F8F8F8; padding: 0 15px; padding-bottom: 0; color: $--color-dark-blue; 
         &::placeholder { color: $--color-light-gray; opacity: .5; }
     }
     input[type="checkbox"] { height: unset; width: unset; position: relative; bottom: -2px; right: -5px; }

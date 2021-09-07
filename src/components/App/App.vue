@@ -22,18 +22,21 @@ export default {
   },
   methods: {
     deleteTask(id) {
-      if( confirm('Are you sure, you want to delete this task ?') )
+      if( confirm('Are you sure, you want to delete this task ?') ) {
         this.tasks = this.tasks.filter(task => task.id !== id);
+        axios.delete(`https://todo-list-app-c2763-default-rtdb.firebaseio.com/tasks/${ id }.json`).catch(error => console.log(error));
+      }
+        
     },
     toggleReminder(id) {
       this.tasks = this.tasks.map(task => task.id === id ? { ...task, reminder: !task.reminder } : task);
+      axios.patch(`https://todo-list-app-c2763-default-rtdb.firebaseio.com/tasks/${ id }.json`, { reminder: this.tasks[id].reminder }).catch(error => console.log(error));
     },
     addTask(task) {
-      this.tasks = [task, ...this.tasks];
+      this.tasks = [...this.tasks, task];
+      axios.post('https://todo-list-app-c2763-default-rtdb.firebaseio.com/tasks.json', task).catch(error => console.log(error));
     },
-    toggleAddTaskPanel() {
-      this.showAddTaskPanel = !this.showAddTaskPanel;
-    }
+    toggleAddTaskPanel() { this.showAddTaskPanel = !this.showAddTaskPanel; }
   },
   data() {
     return {
@@ -44,7 +47,7 @@ export default {
   created() {
     axios.get('https://todo-list-app-c2763-default-rtdb.firebaseio.com/tasks.json').then(respond => {
       if( respond ) {
-        this.tasks = respond.data;
+        this.tasks = Object.keys( respond.data ).map( ( key ) => ({ ...respond.data[ key ], id: key }));
       }
     }).catch(error => console.log(error));
   }
