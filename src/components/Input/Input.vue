@@ -17,8 +17,9 @@ export default {
         },
         name: String,
         placeholder: String,
-        modelValue: String,
-        checked: Boolean
+        modelValue: [String, Boolean],
+        checked: [String, Boolean]
     },
+    emits: ['update:modelValue']
 }
 </script>

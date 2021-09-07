@@ -1,5 +1,5 @@
 <template>
-    <button :class="className"><slot /></button>
+    <button @click="$emit('button-clicked')" :class="className"><slot /></button>
 </template>
 
 <script>
@@ -8,6 +8,7 @@ export default {
     name: 'Button',
     props: {
         className: String
-    }
+    },
+    emits: ['button-clicked']
 }
 </script>

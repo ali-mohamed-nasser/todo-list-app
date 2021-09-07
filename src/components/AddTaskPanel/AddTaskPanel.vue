@@ -1,6 +1,6 @@
 <template>
-    <div class="AddTaskPanel">
-        <form @submit="logData">
+    <div v-show="showAddTaskPanel" class="AddTaskPanel">
+        <form @submit="submitData">
             <Input v-model="text" mainlabel="Task Text" name="task-text" placeholder="Enter your task description" />
             <Input v-model="dateTime" inputType="datetime-local" mainlabel="Task Date & Time" name="task-time" />
             <Input v-model="reminder" inputType="checkbox" :checked="reminder" mainlabel="Set a reminder" name="task-time" />
@@ -21,7 +21,7 @@ export default {
         Button
     },
     methods: {
-        logData(event) {
+        submitData(event) {
             event.preventDefault();
             if( !this.text ) {
                 alert('You can\'t add a task without text.')
@@ -44,8 +44,12 @@ export default {
                 this.text = '';
                 this.dateTime = null;
                 this.reminder = false;
+                this.$emit('hide-add-task-panel');
             }
         }
+    },
+    props: {
+        showAddTaskPanel: Boolean
     },
     data() {
         return {
@@ -53,7 +57,8 @@ export default {
             dateTime: null,
             reminder: false
         }
-    }
+    },
+    emits: ['add-task']
 }
 </script>
 

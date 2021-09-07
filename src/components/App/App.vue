@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <Header title="VueJS ToDo List Application" />
-    <AddTaskPanel @add-task="addTask" />
-    <Tasks @delete-task="deleteTask" @toggle-reminder="toggleDeminder" :tasks="tasks" />
+    <Header @button-clicked="toggleAddTaskPanel" :showAddTaskPanel="showAddTaskPanel" title="VueJS ToDo List Application" />
+    <AddTaskPanel @add-task="addTask" @hide-add-task-panel="toggleAddTaskPanel" :showAddTaskPanel="showAddTaskPanel" />
+    <Tasks @delete-task="deleteTask" @toggle-reminder="toggleReminder" :tasks="tasks" />
   </div>
 </template>
 
@@ -24,16 +24,20 @@ export default {
       if( confirm('Are you sure, you want to delete this task ?') )
         this.tasks = this.tasks.filter(task => task.id !== id);
     },
-    toggleDeminder(id) {
+    toggleReminder(id) {
       this.tasks = this.tasks.map(task => task.id === id ? { ...task, reminder: !task.reminder } : task);
     },
     addTask(task) {
       this.tasks = [task, ...this.tasks];
+    },
+    toggleAddTaskPanel() {
+      this.showAddTaskPanel = !this.showAddTaskPanel;
     }
   },
   data() {
     return {
-      tasks: []
+      tasks: [],
+      showAddTaskPanel: false
     }
   },
   created() {
