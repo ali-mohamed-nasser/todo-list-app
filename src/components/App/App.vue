@@ -29,8 +29,13 @@ export default {
         
     },
     toggleReminder(id) {
-      this.tasks = this.tasks.map(task => task.id === id ? { ...task, reminder: !task.reminder } : task);
-      axios.patch(`https://todo-list-app-c2763-default-rtdb.firebaseio.com/tasks/${ id }.json`, { reminder: this.tasks[id].reminder }).catch(error => console.log(error));
+      this.tasks = this.tasks.map(task => {
+        if (task.id === id) {
+          task = { ...task, reminder: !task.reminder }
+          axios.patch(`https://todo-list-app-c2763-default-rtdb.firebaseio.com/tasks/${ id }.json`, { reminder: task.reminder }).catch(error => console.log(error));
+        }
+        return task;
+      });
     },
     addTask(task) {
       this.tasks = [...this.tasks, task];
@@ -50,6 +55,7 @@ export default {
         this.tasks = Object.keys( respond.data ).map( ( key ) => ({ ...respond.data[ key ], id: key }));
       }
     }).catch(error => console.log(error));
+    
   }
 }
 </script>

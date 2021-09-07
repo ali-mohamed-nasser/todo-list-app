@@ -34,7 +34,7 @@ export default {
                     id: Math.floor(Math.random() * 1000),
                     text: this.text,
                     date: formatedDate,
-                    reminder: this.reminder
+                    reminder: Boolean(this.reminder)
                 }
 
                 // Emit that task to the parent component
@@ -58,7 +58,7 @@ export default {
             reminder: false
         }
     },
-    emits: ['add-task']
+    emits: ['add-task', 'hide-add-task-panel']
 }
 </script>
 
