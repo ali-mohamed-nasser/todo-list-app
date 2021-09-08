@@ -51,7 +51,7 @@ export default {
       }).catch(error => console.log(error));
     },
     // Switch between the show and hide of the add task form
-    toggleAddTaskPanel() { this.showAddTaskPanel = !this.showAddTaskPanel; }
+    toggleAddTaskPanel() { this.showAddTaskPanel = !this.showAddTaskPanel; },
   },
   data() {
     return {
@@ -66,7 +66,6 @@ export default {
         this.tasks = Object.keys( respond.data ).map( ( key ) => ({ ...respond.data[ key ], id: key }));
       }
     }).catch(error => console.log(error));
-    
   }
 }
 </script>
