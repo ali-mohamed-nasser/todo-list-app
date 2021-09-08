@@ -31,7 +31,6 @@ export default {
 
                 // Create a new task to insert
                 const newTask = {
-                    id: Math.floor(Math.random() * 1000),
                     text: this.text,
                     date: formatedDate,
                     reminder: Boolean(this.reminder)
