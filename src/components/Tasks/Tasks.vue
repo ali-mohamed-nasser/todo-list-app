@@ -7,6 +7,7 @@
 <script>
 import './Tasks.scss';
 import Task from './Task/Task.vue';
+
 export default {
     name:'Tasks',
     props: { tasks: Array },
